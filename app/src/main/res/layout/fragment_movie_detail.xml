@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".ui.screens.MovieDetailFragment">
+
+    <ProgressBar
+        android:id="@+id/progress_bar_movie_detail"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:indeterminateTint="@color/refreshRingColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/error_movie_detail_layout"
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/nameOfFilmTextColor"
+            android:text="@string/error_try_again_text"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/try_again_button_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/try_again_button_text"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/refreshRingColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/movie_detail_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar_layout_movie_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/film_image_gradient">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/movie_image_detail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/image_detail"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@drawable/film_image_gradient"
+                        app:layout_constraintStart_toStartOf="@id/movie_image_detail"
+                        app:layout_constraintEnd_toEndOf="@id/movie_image_detail"
+                        app:layout_constraintTop_toTopOf="@id/movie_image_detail"
+                        app:layout_constraintBottom_toBottomOf="@id/movie_image_detail"/>
+
+                    <ImageView
+                        android:id="@+id/imageView_like_button_movie_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/image_like"
+                        android:layout_marginEnd="@dimen/space_4x"
+                        android:layout_marginTop="@dimen/space_5x"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <ImageButton
+                        android:id="@+id/movie_detail_back_button"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/back_button_icon"
+                        android:fontFamily="@font/roboto"
+                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginTop="@dimen/space_5x"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/film_rating_view_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13+"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:padding="4dp"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/roboto"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginBottom="@dimen/space_1x"
+                        android:background="@drawable/rating_rectangle_background"
+                        app:layout_constraintBottom_toTopOf="@id/textView_movie_name"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView_movie_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Avengers:\nEnd Game"
+                        android:textColor="@color/nameOfFilmTextColor"
+                        android:textSize="40sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginEnd="@dimen/space_4x"
+                        android:layout_marginTop="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+
+                    <TextView
+                        android:id="@+id/textView_genre_of_movie"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Action, Adventure, Drama"
+                        android:textColor="@color/genreOfFilmTextColor"
+                        android:textSize="14sp"
+                        android:textStyle="normal"
+                        android:layout_marginTop="@dimen/space_1x"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginEnd="@dimen/space_4x"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/textView_movie_kp_rating"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView_movie_kp_rating"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/kinopoisk_rating_string"
+                        android:textColor="@color/reviewsNumberTextColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/space_1x"
+                        android:layout_marginStart="@dimen/space_4x"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/rating_bar_movie_detail"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView_genre_of_movie"/>
+
+                    <RatingBar
+                        android:id="@+id/rating_bar_movie_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_1x"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:theme="@style/CustomRatingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        app:layout_constraintBottom_toTopOf="@id/horizontal_barrier_icons_images"
+                        app:layout_constraintTop_toBottomOf="@id/textView_movie_kp_rating"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.constraintlayout.widget.Barrier
+                        android:id="@+id/horizontal_barrier_icons_images"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:barrierDirection="bottom"
+                        app:constraint_referenced_ids="textView_movie_kp_rating"/>
+
+                    <TextView
+                        android:id="@+id/textView_movie_storyline_header"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Описание"
+                        android:textColor="@color/nameOfFilmTextColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginEnd="@dimen/space_4x"
+                        app:layout_constraintBottom_toTopOf="@id/textView_movie_review"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/horizontal_barrier_icons_images"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/textView_movie_review"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
+                        android:textColor="@color/storylineTextColor"
+                        android:textSize="14sp"
+                        android:layout_marginTop="@dimen/space_1x"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginEnd="@dimen/space_4x"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView_movie_storyline_header"
+                        app:layout_constraintBottom_toTopOf="@id/textView_cast_header"/>
+
+                    <TextView
+                        android:id="@+id/textView_cast_header"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:text="Актеры"
+                        android:textColor="@color/nameOfFilmTextColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginStart="@dimen/space_4x"
+                        android:layout_marginEnd="@dimen/space_4x"
+                        android:layout_marginBottom="@dimen/space_2x"
+                        app:layout_constraintBottom_toTopOf="@id/guideLine_horizontal_actors_images"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView_movie_review"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideLine_horizontal_actors_images"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:constraint_referenced_ids="textView_cast_header"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_actors"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/space_4x"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/guideLine_horizontal_actors_images"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

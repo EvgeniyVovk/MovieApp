@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="backgroundColor">#191926</color>
+    <color name="genreOfFilmTextColor">#FF3466</color>
+    <color name="timeOfFilmTextColor">#565665</color>
+    <color name="reviewsNumberTextColor">#6D6D80</color>
+    <color name="nameOfFilmTextColor">#ECECEC</color>
+    <color name="gradientFilmReviewStartColor">#63637580</color>
+    <color name="gradientFilmReviewEndColor">#3B3B4D80</color>
+    <color name="stokeFilmReviewColor">#63637580</color>
+    <color name="backButtonTextColor">#50FFFFFF</color>
+    <color name="storylineTextColor">#75ECECEC</color>
+    <color name="actorNameTextColor">#D8D8D8</color>
+    <color name="refreshRingColor">#FF3365</color>
+    <color name="hint_color">#FF808080</color>
+</resources>
